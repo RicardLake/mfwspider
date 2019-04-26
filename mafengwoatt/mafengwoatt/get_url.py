@@ -8,7 +8,6 @@ import time
 
 
 
-
 def get_url():
     #保存每个景点的链接
     fp = open("./href.txt", 'a')
@@ -58,6 +57,27 @@ def test():
     connect.commit()
     print('成功插入', cursor.rowcount, '条数据')
 
+def test2():
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    driver = webdriver.Chrome(executable_path=r'C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe',
+                              chrome_options=chrome_options)
+    url='http://www.mafengwo.cn/poi/5515392.html'
+    driver.get(url)
+    b=''
+
+    print(b)
+    driver.close()
+
+def test3():
+    fr = open(r"D:\PyCharm\maatt\mafengwoatt\mafengwoatt/href.txt")
+    urls=list()
+    for i in fr.readlines():
+        urls.append(i.strip())
+    print(urls[13290])
 if __name__ =="__main__":
     url = 'http://www.mafengwo.cn/jd/21536/gonglve.html'
-    get_url()
+    #get_url()
+    #test2()
+    test3()
