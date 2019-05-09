@@ -13,7 +13,7 @@ class JdattSpider(scrapy.Spider):
     urls=list()
     for i in fr.readlines():
         urls.append(i.strip())
-    start_urls = urls[61765:-1]
+    start_urls = urls
     def parse(self, response):
         att_item = MafengwoattItem()
         att_item['city'] = response.xpath("//div[@class='item']//span//a/text()").extract()[0]
