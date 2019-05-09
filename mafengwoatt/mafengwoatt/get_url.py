@@ -75,9 +75,7 @@ def test3():
     urls=list()
     for i in fr.readlines():
         urls.append(i.strip())
-    print(urls[13290])
+    print(urls[47955])
 if __name__ =="__main__":
     url = 'http://www.mafengwo.cn/jd/21536/gonglve.html'
-    #get_url()
-    #test2()
     test3()

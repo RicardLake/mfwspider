@@ -13,7 +13,7 @@ class JdattSpider(scrapy.Spider):
     urls=list()
     for i in fr.readlines():
         urls.append(i.strip())
-    start_urls = urls[13290:-1]
+    start_urls = urls[61765:-1]
     def parse(self, response):
         att_item = MafengwoattItem()
         att_item['city'] = response.xpath("//div[@class='item']//span//a/text()").extract()[0]
@@ -23,7 +23,10 @@ class JdattSpider(scrapy.Spider):
         except:
             att_item['detail'] = ""
         att_item['location'] = response.xpath("//div[@class='mod mod-location']//p/text()").extract()[0]
-        att_item['comment_num'] = response.xpath("//div[@class='mod mod-reviews']//span//em/text()").extract()[0]
+        try:
+            att_item['comment_num'] = response.xpath("//div[@class='mod mod-reviews']//span//em/text()").extract()[0]
+        except:
+            att_item['comment_num']="0"
         try:
             att_item['pos_comment'] = response.xpath(
                 "//div[@class='review-nav']//li[@data-category='13']//span[@class='num']/text()").extract()[0]
